@@ -1,0 +1,18 @@
+query getBoards($filter: FiltersExpression) {
+    boards(filter: $filter) {
+        board { 
+            _id
+            title
+            user {
+                _id
+                name
+                email
+            }
+            createdAt
+            updatedAt
+        }
+        currentPage
+        totalPages
+        message
+    }
+}

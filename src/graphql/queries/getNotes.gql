@@ -1,0 +1,19 @@
+query getNotes($filter: FiltersExpression) {
+    notes(filter: $filter) {
+        note { 
+            _id
+            title
+            body
+            user {
+                _id
+                name
+                email
+            }
+            createdAt
+            updatedAt
+        }
+        currentPage
+        totalPages
+        message
+    }
+}

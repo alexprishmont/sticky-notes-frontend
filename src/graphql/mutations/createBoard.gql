@@ -1,0 +1,6 @@
+mutation createBoard($title: String! $userId: String!) {
+    createBoard(title: $title userId: $userId) {
+        _id
+        title
+    }
+}

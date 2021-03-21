@@ -1,0 +1,11 @@
+mutation createNote($title: String! $body: String! $userId: String! $boardId: String!) {
+    createNote(
+        title: $title
+        body: $body
+        userId: $userId
+        boardId: $boardId
+    ) {
+        _id
+        title
+    }
+}

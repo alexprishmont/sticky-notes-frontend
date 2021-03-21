@@ -1,0 +1,15 @@
+mutation updateNote(
+    $id: ID!
+    $title: String!
+    $body: String!
+) {
+    updateNote(
+        id: $id
+        title: $title
+        body: $body
+    ) {
+        _id
+        title
+        body
+    }
+}
