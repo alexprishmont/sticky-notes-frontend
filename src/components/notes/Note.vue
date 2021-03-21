@@ -1,6 +1,7 @@
 <template>
     <v-card color="#385F73" dark @click="selectNote">
         <v-card-title class="headline">
+            <v-icon v-if="isFeatured">mdi-star</v-icon>
             {{ title }}
             <v-spacer></v-spacer>
             <v-icon v-if="isSelected">
@@ -15,10 +16,23 @@
 
 <script>
 export default {
-  props: ['title', 'body', 'id'],
+  props: ['note'],
   computed: {
     isSelected() {
       return this.$store.getters.selectedNotes.indexOf(this.id) !== -1;
+    },
+    title() {
+      return this.note.title;
+    },
+    body() {
+      return this.note.body;
+    },
+    isFeatured() {
+      return this.note.isFeatured;
+    },
+    id() {
+      // eslint-disable-next-line
+      return this.note._id;
     },
   },
   methods: {

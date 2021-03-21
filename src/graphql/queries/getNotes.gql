@@ -4,6 +4,7 @@ query getNotes($filter: FiltersExpression) {
             _id
             title
             body
+            isFeatured
             user {
                 _id
                 name

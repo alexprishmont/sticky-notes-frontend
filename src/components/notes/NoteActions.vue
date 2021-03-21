@@ -75,6 +75,15 @@
                   ></v-textarea>
                 </v-col>
                 <v-col cols="12" sm="12" md="12">
+                  <v-checkbox
+                    v-model="notesDetails.isFeatured"
+                    label="Is featured?"
+                    color="orange"
+                    value="true"
+                    hide-details
+                  ></v-checkbox>
+                </v-col>
+                <v-col cols="12" sm="12" md="12">
                   <v-btn
                     large
                     outlined
@@ -129,6 +138,15 @@
                     no-resize
                     counter="80"
                   ></v-textarea>
+                </v-col>
+                <v-col cols="12" sm="12" md="12">
+                  <v-checkbox
+                    v-model="notesDetails.isFeatured"
+                    label="Is featured?"
+                    color="orange"
+                    value="true"
+                    hide-details
+                  ></v-checkbox>
                 </v-col>
                 <v-col cols="12" sm="12" md="12">
                   <v-btn
@@ -206,6 +224,7 @@ export default {
         valid: false,
         title: '',
         body: '',
+        isFeatured: false,
       },
     };
   },
@@ -238,6 +257,7 @@ export default {
         id: this.selectedNotes[0],
         title: this.notesDetails.title,
         body: this.notesDetails.body,
+        isFeatured: this.notesDetails.isFeatured === 'true',
       });
 
       setTimeout(() => {
@@ -257,8 +277,8 @@ export default {
         return;
       }
 
-      let title; let
-        body;
+      let title;
+      let body;
 
       this.$store.getters.notes.forEach((note) => {
         // eslint-disable-next-line
@@ -278,8 +298,9 @@ export default {
         title: this.notesDetails.title,
         body: this.notesDetails.body,
         // eslint-disable-next-line
-            userId: this.$store.getters.user._id,
+        userId: this.$store.getters.user._id,
         boardId: this.$route.params.id,
+        isFeatured: this.notesDetails.isFeatured === 'true',
       });
 
       setTimeout(() => {

@@ -1,9 +1,16 @@
-mutation createNote($title: String! $body: String! $userId: String! $boardId: String!) {
+mutation createNote(
+    $title: String! 
+    $body: String! 
+    $userId: String! 
+    $boardId: String!
+    $isFeatured: Boolean
+) {
     createNote(
         title: $title
         body: $body
         userId: $userId
         boardId: $boardId
+        isFeatured: $isFeatured
     ) {
         _id
         title

@@ -3,7 +3,7 @@
     <SelectCounter :selected="selectedNotes"/>
     <v-row>
       <v-col cols="12" md="4" v-for="note in notesData.notes" :key="note._id">
-        <Note :title="note.title" :body="note.body" :id="note._id"/>
+        <Note :note="note"/>
       </v-col>
     </v-row>
     <NoteActions/>
