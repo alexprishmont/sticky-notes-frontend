@@ -85,6 +85,12 @@ export default {
       '#115293',
       '#388e3c',
     ],
+    dateOptions: {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    },
   }),
   computed: {
     id() {
@@ -95,10 +101,12 @@ export default {
       return this.board.title;
     },
     createdAt() {
-      return this.board.createdAt;
+      const createdAt = new Date(this.board.createdAt);
+      return createdAt.toLocaleDateString('en-US', this.dateOptions);
     },
     updatedAt() {
-      return this.board.updatedAt;
+      const updatedAt = new Date(this.board.updatedAt);
+      return updatedAt.toLocaleDateString('en-US', this.dateOptions);
     },
     color() {
       return this.colors[0 + Math.floor(5 * Math.random())];

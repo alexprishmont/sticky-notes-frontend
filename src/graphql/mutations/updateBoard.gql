@@ -1,7 +1,0 @@
-mutation updateBoard($id: ID! $title: String!) {
-    updateBoard(id: $id title: $title) {
-        _id
-        title
-        updatedAt
-    }
-}

@@ -1,17 +1,6 @@
 <template>
   <v-app>
-    <v-container fill-height v-if="loadingStatus">
-      <v-row class="text-center" align="center" justify="center">
-        <v-col cols="12" md="12">
-          <v-progress-circular
-            :size="50"
-            color="primary"
-            indeterminate
-          ></v-progress-circular>
-        </v-col>
-      </v-row>
-    </v-container>
-
+    <LoadingBar v-if="loadingStatus"/>
     <v-main v-if="!loadingStatus">
       <Sidebar v-if="isAuth"/>
       <CookiesPopup/>
@@ -48,6 +37,7 @@
 <script>
 import Sidebar from '@/components/sidebar/Sidebar.vue';
 import CookiesPopup from '@/components/CookiesPopup.vue';
+import LoadingBar from '@/components/LoadingBar.vue';
 
 export default {
   created() {
@@ -72,6 +62,7 @@ export default {
   components: {
     Sidebar,
     CookiesPopup,
+    LoadingBar,
   },
   data() {
     return {

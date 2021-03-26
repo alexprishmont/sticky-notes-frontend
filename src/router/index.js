@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Dashboard from '@/components/dashboard/Dashboard.vue';
+import Dashboard from '@/components/pages/Dashboard.vue';
+import AllUserNotes from '@/components/pages/AllUserNotes.vue';
 import Login from '@/components/sign/Login.vue';
 import Register from '@/components/sign/Register.vue';
 import BoardView from '@/components/boards/BoardView.vue';
-import NotesView from '@/components/notes/NotesView.vue';
 import MyAccount from '@/components/account/MyAccount.vue';
 import NotfoundPage from '@/components/404.vue';
 
@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: '/notes',
-    component: NotesView,
+    component: AllUserNotes,
     meta: {
       middleware: [auth],
     },

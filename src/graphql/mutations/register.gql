@@ -1,6 +1,0 @@
-mutation register($email: String! $password: String! $name: String!) {
-    signup(email: $email password: $password name: $name) {
-        _id
-        name
-    }
-}

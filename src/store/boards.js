@@ -1,7 +1,8 @@
-import createBoardMutation from '@/graphql/mutations/createBoard.gql';
+import CREATE_BOARD_MUTATION from '@/graphql/mutations/board/createBoard.gql';
+import UPDATE_BOARD_MUTATION from '@/graphql/mutations/board/updateBoard.gql';
+import DELETE_BOARD_MUTATION from '@/graphql/mutations/board/deleteBoard.gql';
 import getBoards from '@/graphql/queries/getBoards.gql';
-import updateBoard from '@/graphql/mutations/updateBoard.gql';
-import deleteBoardMutation from '@/graphql/mutations/deleteBoard.gql';
+
 import { apolloClient } from '@/vue-apollo';
 
 const boardsStore = {
@@ -71,7 +72,7 @@ const boardsStore = {
     async deleteBoard({ dispatch }, id) {
       try {
         const { data } = await apolloClient.mutate({
-          mutation: deleteBoardMutation,
+          mutation: DELETE_BOARD_MUTATION,
           variables: {
             id,
           },
@@ -85,7 +86,7 @@ const boardsStore = {
     async createBoard({ dispatch }, boardDetails) {
       try {
         await apolloClient.mutate({
-          mutation: createBoardMutation,
+          mutation: CREATE_BOARD_MUTATION,
           variables: {
             ...boardDetails,
           },
@@ -99,7 +100,7 @@ const boardsStore = {
     async updateBoard({ dispatch }, boardDetails) {
       try {
         await apolloClient.mutate({
-          mutation: updateBoard,
+          mutation: UPDATE_BOARD_MUTATION,
           variables: {
             ...boardDetails,
           },

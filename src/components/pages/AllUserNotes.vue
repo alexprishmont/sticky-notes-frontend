@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <NotesView/>
-  </div>
+    <div>
+        <NotesView/>
+    </div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   },
   beforeMount() {
     this.$store.commit('resetSelectedNotes');
-    this.$store.dispatch('loadNotes', this.$route.params.id);
+    this.$store.dispatch('loadAllUserNotes');
   },
   computed: {
     selectedNotes() {

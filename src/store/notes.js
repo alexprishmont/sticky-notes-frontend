@@ -1,8 +1,8 @@
 import { apolloClient } from '@/vue-apollo';
 import getNotes from '@/graphql/queries/getNotes.gql';
-import createNote from '@/graphql/mutations/createNote.gql';
-import deleteNote from '@/graphql/mutations/deleteNote.gql';
-import updateNote from '@/graphql/mutations/updateNote.gql';
+import createNote from '@/graphql/mutations/note/createNote.gql';
+import deleteNote from '@/graphql/mutations/note/deleteNote.gql';
+import updateNote from '@/graphql/mutations/note/updateNote.gql';
 
 const notesStore = {
   state: {

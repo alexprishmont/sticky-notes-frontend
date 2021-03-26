@@ -1,5 +1,5 @@
-import registerMutation from '@/graphql/mutations/register.gql';
-import loginMutation from '@/graphql/mutations/login.gql';
+import REGISTER_MUTATION from '@/graphql/mutations/auth/register.gql';
+import LOGIN_MUTATION from '@/graphql/mutations/auth/login.gql';
 import getUserQuery from '@/graphql/queries/getCurrentUser.gql';
 import { apolloClient } from '@/vue-apollo';
 import router from '@/router';
@@ -26,7 +26,7 @@ const authStore = {
     async login({ commit, dispatch }, authDetails) {
       try {
         const { data } = await apolloClient.mutate({
-          mutation: loginMutation,
+          mutation: LOGIN_MUTATION,
           variables: {
             ...authDetails,
           },
@@ -45,7 +45,7 @@ const authStore = {
     async register({ dispatch }, authDetails) {
       try {
         await apolloClient.mutate({
-          mutation: registerMutation,
+          mutation: REGISTER_MUTATION,
           variables: {
             ...authDetails,
           },
@@ -72,6 +72,9 @@ const authStore = {
         commit('setUser', data.me);
       } catch (error) {
         if (this.state.token) {
+          commit('setToken', null);
+          commit('setUser', {});
+          localStorage.removeItem(config.AUTH_HEADER);
           router.push({ path: '/login' });
           dispatch('setError', 'Your session is not valid.');
         }

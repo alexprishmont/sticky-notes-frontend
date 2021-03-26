@@ -1,6 +1,7 @@
 <template>
     <div>
       <v-speed-dial
+        v-if="createActionAllowed || selectedNotes.length"
         v-model="fab"
         bottom
         right
@@ -18,7 +19,14 @@
             </v-icon>
           </v-btn>
         </template>
-        <v-btn fab dark small color="indigo" @click="creationDialog = true">
+        <v-btn
+          v-if="createActionAllowed"
+          fab
+          dark
+          small
+          color="indigo"
+          @click="creationDialog = true"
+        >
           <v-icon>mdi-plus</v-icon>
         </v-btn>
         <v-btn v-if="selectedNotes.length" fab dark small color="green" @click="editNote">
@@ -206,6 +214,7 @@
 
 <script>
 export default {
+  props: ['createActionAllowed'],
   data() {
     return {
       fab: false,
