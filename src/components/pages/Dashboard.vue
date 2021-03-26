@@ -1,10 +1,24 @@
 <template>
     <div>
       <SelectCounter :selected="selectedBoards"/>
-      <v-row>
+
+      <v-row v-if="boardsData.boards && boardsData.boards.length">
           <v-col cols="12" md="4" v-for="board in boardsData.boards" :key="board._id">
               <BoardCard :board="board"/>
           </v-col>
+      </v-row>
+
+      <v-row v-else>
+        <v-col cols="12" md="12">
+          <v-alert
+            outlined
+            type="warning"
+            prominent
+            border="left"
+          >
+            You don't have any boards yet.
+          </v-alert>
+        </v-col>
       </v-row>
 
       <BoardActions/>
